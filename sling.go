@@ -3,6 +3,7 @@ package sling
 import (
 	"encoding/base64"
 	"encoding/json"
+	"fmt"
 	"io"
 	"net/http"
 	"net/url"
@@ -107,10 +108,20 @@ func (s *Sling) Head(pathURL string) *Sling {
 	return s.Path(pathURL)
 }
 
+// Headf is like .Head() but uses fmt.Sprintf to construct the pathURL
+func (s *Sling) Headf(format string, args ...interface{}) *Sling {
+	return s.Head(fmt.Sprintf(format, args...))
+}
+
 // Get sets the Sling method to GET and sets the given pathURL.
 func (s *Sling) Get(pathURL string) *Sling {
 	s.method = "GET"
 	return s.Path(pathURL)
+}
+
+// Getf is like .Get() but uses fmt.Sprintf to construct the pathURL
+func (s *Sling) Getf(format string, args ...interface{}) *Sling {
+	return s.Get(fmt.Sprintf(format, args...))
 }
 
 // Post sets the Sling method to POST and sets the given pathURL.
@@ -119,10 +130,20 @@ func (s *Sling) Post(pathURL string) *Sling {
 	return s.Path(pathURL)
 }
 
+// Postf is like .Post() but uses fmt.Sprintf to construct the pathURL
+func (s *Sling) Postf(format string, args ...interface{}) *Sling {
+	return s.Post(fmt.Sprintf(format, args...))
+}
+
 // Put sets the Sling method to PUT and sets the given pathURL.
 func (s *Sling) Put(pathURL string) *Sling {
 	s.method = "PUT"
 	return s.Path(pathURL)
+}
+
+// Putf is like .Put() but uses fmt.Sprintf to construct the pathURL
+func (s *Sling) Putf(format string, args ...interface{}) *Sling {
+	return s.Put(fmt.Sprintf(format, args...))
 }
 
 // Patch sets the Sling method to PATCH and sets the given pathURL.
@@ -131,10 +152,20 @@ func (s *Sling) Patch(pathURL string) *Sling {
 	return s.Path(pathURL)
 }
 
+// Patchf is like .Patch() but uses fmt.Sprintf to construct the pathURL
+func (s *Sling) Patchf(format string, args ...interface{}) *Sling {
+	return s.Patch(fmt.Sprintf(format, args...))
+}
+
 // Delete sets the Sling method to DELETE and sets the given pathURL.
 func (s *Sling) Delete(pathURL string) *Sling {
 	s.method = "DELETE"
 	return s.Path(pathURL)
+}
+
+// Deletef is like .Delete() but uses fmt.Sprintf to construct the pathURL
+func (s *Sling) Deletef(format string, args ...interface{}) *Sling {
+	return s.Delete(fmt.Sprintf(format, args...))
 }
 
 // Header
